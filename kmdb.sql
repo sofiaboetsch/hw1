@@ -138,38 +138,28 @@ CREATE TABLE characters(
 
 INSERT INTO studios (studio_name) VALUES ("Warner Bros."); 
 
-INSERT INTO movies (title, year_released, mpaa_rating, studio_id) VALUES ("Batman Begins", "2003", "PG-13",1);
+INSERT INTO movies (title, year_released, mpaa_rating, studio_id) VALUES ("Batman Begins", "2005", "PG-13",1);
 INSERT INTO movies (title, year_released, mpaa_rating, studio_id) VALUES ("The Dark Knigh", "2008", "PG-13",1);
 INSERT INTO movies (title, year_released, mpaa_rating, studio_id) VALUES ("The Dark Knigh Rises", "2012", "PG-13",1);
 
 INSERT INTO actors (actor_name) VALUES ("Christian Bale"),("Michael Caine"),("Liam Neeson"), ("Katie Holmes"),("Gary Oldman"), 
-("Heath Ledger"), ("Aaron Eckhart"), ("Maggie Gyllenhaal"), ("Tom Hardy"), ("Anne Hathaway"),("Joseph Gordon-Levitt");
+("Heath Ledger"), ("Aaron Eckhart"), ("Maggie Gyllenhaal"), ("Tom Hardy"), ("Joseph Gordon-Levitt"), ("Anne Hathaway");
 
 INSERT INTO characters (characters_name, actor_id, movie_id) VALUES ("Bruce Wayne", 1 , 1); 
 INSERT INTO characters (characters_name, actor_id, movie_id) VALUES ("Alfred",2 , 1);
 INSERT INTO characters (characters_name, actor_id, movie_id) VALUES ("Ra's Al Ghul",3 , 1);
 INSERT INTO characters (characters_name, actor_id, movie_id) VALUES ("Rachel Dawes", 4, 1);
 INSERT INTO characters (characters_name, actor_id, movie_id) VALUES ("Commissioner Gordon", 5, 1);
-
-
-
---ifkwokfowekpfewk 
--- Batman Begins          Michael Caine         Alfred
--- Batman Begins          Liam Neeson           Ra's Al Ghul
--- Batman Begins          Katie Holmes          Rachel Dawes
--- Batman Begins          Gary Oldman           Commissioner Gordon
--- The Dark Knight        Christian Bale        Bruce Wayne
--- The Dark Knight        Heath Ledger          Joker
--- The Dark Knight        Aaron Eckhart         Harvey Dent
--- The Dark Knight        Michael Caine         Alfred
--- The Dark Knight        Maggie Gyllenhaal     Rachel Dawes
--- The Dark Knight Rises  Christian Bale        Bruce Wayne
--- The Dark Knight Rises  Gary Oldman           Commissioner Gordon
--- The Dark Knight Rises  Tom Hardy             Bane
--- The Dark Knight Rises  Joseph Gordon-Levitt  John Blake
--- The Dark Knight Rises  Anne Hathaway         Selina Kyle
-
-
+INSERT INTO characters (characters_name, actor_id, movie_id) VALUES ("Bruce Wayne", 1, 2);
+INSERT INTO characters (characters_name, actor_id, movie_id) VALUES ("Jocker", 6, 2);
+INSERT INTO characters (characters_name, actor_id, movie_id) VALUES ("Harvey Dent", 7, 2);
+INSERT INTO characters (characters_name, actor_id, movie_id) VALUES ("Alfred",2 , 2);
+INSERT INTO characters (characters_name, actor_id, movie_id) VALUES ("Rachel Dawes", 8, 2);
+INSERT INTO characters (characters_name, actor_id, movie_id) VALUES ("Bruce Wayne", 1, 3);
+INSERT INTO characters (characters_name, actor_id, movie_id) VALUES ("Commissioner Gordon", 5, 3);
+INSERT INTO characters (characters_name, actor_id, movie_id) VALUES ("Bane", 9, 3);
+INSERT INTO characters (characters_name, actor_id, movie_id) VALUES ("John Blake", 10, 3);
+INSERT INTO characters (characters_name, actor_id, movie_id) VALUES ("Selina Kyle", 11, 3);
 
 -- Prints a header for the movies output
 .print "Movies"
@@ -179,7 +169,7 @@ INSERT INTO characters (characters_name, actor_id, movie_id) VALUES ("Commission
 -- The SQL statement for the movies output
 -- TODO!
 SELECT movies.title, movies.year_released, movies.mpaa_rating, studios.studio_name FROM movies 
-INNER JOIN studios ON movies.studio_id = studios.id ;
+INNER JOIN studios ON movies.studio_id = studios.id; 
 
 -- Prints a header for the cast output
 .print ""
@@ -187,6 +177,6 @@ INNER JOIN studios ON movies.studio_id = studios.id ;
 .print "========"
 .print ""
 
-
 -- The SQL statement for the cast output
--- TODO!
+SELECT movies.title, actors.actor_name, characters.characters_name FROM characters 
+INNER JOIN movies ON characters.movie_id = movies.id INNER JOIN actors ON characters.actor_id= actors.id;
